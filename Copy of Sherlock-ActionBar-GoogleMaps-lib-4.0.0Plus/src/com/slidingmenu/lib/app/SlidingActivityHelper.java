@@ -3,13 +3,16 @@ package com.slidingmenu.lib.app;
 import android.app.Activity;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -135,7 +138,13 @@ public class SlidingActivityHelper {
 				mSlidingMenu.setBehindOffsetRes(R.dimen.actionbar_home_width);	
 				mSlidingMenu.requestLayout();
 				menuLayout.setVisibility(VISIBLE);	
-				usersList.removeAllViewsInLayout();
+				//usersList.removeAllViewsInLayout();				
+				//usersList.removeViews(0, usersList.getCount());
+				
+				CustomListAdapter emptyAdapter=new CustomListAdapter() ;
+				usersList.setAdapter(emptyAdapter);
+				int num=0;
+				num++;
 			}
 			else
 			{				
@@ -144,6 +153,38 @@ public class SlidingActivityHelper {
 			return true;
 		}
 		return false;
+	}
+
+
+	public class CustomListAdapter extends BaseAdapter {
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	 
+		
+	   
+
 	}
 
 }
